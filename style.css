@@ -3,6 +3,22 @@ body {
 }
 #draw {
     background: #E4B871;
-
     display: block;
+}
+.actions {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.actions > #pen {
+    display: none;
+}
+
+.actions.eraser > #pen {
+    display: inline-block;
+}
+
+.actions.eraser > #eraser {
+    display: none;
 }
