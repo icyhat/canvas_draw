@@ -1,39 +1,38 @@
-
 const draw = document.getElementById("draw");
+const ctx = draw.getContext("2d");
 
 let is_paint = false;
+const RADIUS = 1;
+let last_point = [undefined, undefined];
 
-draw.onmousedown = function (e) {
+draw.onmousedown = function(e) {
     is_paint = true;
-    const [x, y] = [e.clientX, e.clientY];
-    const pen = document.createElement('div');
-    pen.style = "width: 6px; height: 6px;"  +
-                "background: black;" +
-                "border-radius: 3px;" +
-                "position: absolute; left: "+ (x-3) +"px;" + "top: " + (y-3) + "px;";
-    draw.appendChild(pen);
+    last_point = [e.clientX, e.clientY];
+    drawCircle(x, y);
 }
-
-draw.onmousemove = function (e) {
+draw.onmousemove = function(e) {
     if(is_paint) {
         const [x, y] = [e.clientX, e.clientY];
-        const pen = document.createElement('div');
-        pen.style = "width: 6px; height: 6px;"  +
-                     "background: black;" +
-                     "border-radius: 3px;" +
-                     "position: absolute; left: "+ (x-3) +"px;" + "top: " + (y-3) + "px;";
-        draw.appendChild(pen);
-        console.log(x, y)
+        drawCircle(x, y);
+        drawLine(last_point[0], last_point[1],  x, y)
+        last_point = [x, y]
     }
 }
-
-draw.onmouseup = function (e) {
+draw.onmouseup = function(e) {
     is_paint = false;
-    const [x, y] = [e.clientX, e.clientY];
-    const pen = document.createElement('div');
-    pen.style = "width: 6px; height: 6px;"  +
-                "background: black;" +
-                "border-radius: 3px;" +
-                "position: absolute; left: "+ (x-3) +"px;" + "top: " + (y-3) + "px;";
-    draw.appendChild(pen);
+}
+function drawLine(x1, y1, x2, y2) {
+    ctx.beginPath();
+    ctx.strokeStyle = "black";
+    ctx.moveTo(x1, y1);
+    ctx.lineWidth = 5;
+    ctx.lineTo(x2, y2);
+    ctx.stroke();
+    ctx.closePath();
+}
+function drawCircle(x, y, radius=RADIUS) {
+    ctx.beginPath();
+    ctx.fillStyle = "black";
+    ctx.arc(x,y,radius,0,Math.PI*2);
+    ctx.fill();
 }
