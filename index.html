@@ -6,14 +6,35 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <script src="//at.alicdn.com/t/font_1059578_rb93tvsaoc.js"></script>
 </head>
 <body>
     <canvas id="draw">
     </canvas>
+
     <div id="actions" class="actions">
-        <button id="eraser">Eraser</button>
-        <button id="pen">Pen</button>
+        <svg id="pen" class="icon active" aria-hidden="true">
+                <use xlink:href="#icon-qianbi1"></use>
+        </svg>
+        <svg id="eraser" class="icon" aria-hidden="true">
+                <use xlink:href="#icon-xiangpi1"></use>
+        </svg>
+        <svg id="reset" class="icon" aria-hidden="true">
+                <use xlink:href="#icon-Reset"></use>
+        </svg>
+        <svg id="download" class="icon" aria-hidden="true">
+                <use xlink:href="#icon-xiazai"></use>
+        </svg>
     </div>
+    <ol class="colors">
+        <li id="red" class="red active"></li>
+        <li id="green" class="green"></li>
+        <li id="blue" class="blue"></li>
+    </ol>
+    <ol class="sizes">
+        <li id="big" class="big"></li>
+        <li id="small" class="small active"></li>
+    </ol>
     <script src="main.js"></script>
 </body>
 </html>
