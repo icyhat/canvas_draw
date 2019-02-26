@@ -1,3 +1,4 @@
+
 // init canvas
 const draw = document.getElementById("draw");
 const ctx = draw.getContext("2d");
@@ -27,9 +28,10 @@ const sieze_map = {
 const RADIUS = 1;
 let last_point = [undefined, undefined];
 
-// init
+// init background
 ctx.fillStyle = "white"
 ctx.fillRect(0,0, draw.width, draw.height)
+
 // touchable check
 
 function move (x, y) {
@@ -92,6 +94,7 @@ eraser.onclick = function () {
 }
 reset.onclick = function () {
     ctx.clearRect(0, 0, draw.width, draw.height);
+    ctx.fillRect(0,0, draw.width, draw.height);
 }
 download.onclick = function () {
     const url = draw.toDataURL("image/jpg")
